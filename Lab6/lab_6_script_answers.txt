@@ -1,0 +1,14 @@
+Yuwangyang Fan
+
+1. CREATE TABLE IF NOT EXISTS university_info (University_Name text, Date_Established Int, Address text, Student_Population Int, Acceptance_Rate Decimal);
+2. INSERT INTO university_db (University_Name, Date_Established, Address, Student_Population, Acceptance_Rate) VALUES('CU Boulder', 1876, '1100 28th St, Boulder, CO 80303', 35000, 0.8)；
+3. SELECT name , major FROM football_players ORDER BY major;
+4. SELECT name , rushing_yards FROM football_players WHERE rushing_yards > 69;
+5. SELECT * FROM football_games WHERE visitor_name = 'Nebraska';
+6. SELECT * FROM football_games WHERE home_score > visitor_score;
+7. SELECT * FROM football_games WHERE game_date > '2018-08-01' and game_date < '2018-11-01';
+8. CREATE VIEW winning AS SELECT COUNT(*) AS winnings FROM football_games WHERE home_score > visitor_score;
+9. CREATE VIEW played AS SELECT COUNT(*) AS plays FROM football_games; 
+10. SELECT CAST((winnings) as float)/cast((plays) as float) as percentage from winning, played;
+11. SELECT count(*) from football_games where (select id from football_players where name = 'Cedric Vega') = any(players);
+12. SELECT (cast(football_players.rushing_yards as float) / num_games.total) from (SELECT count(*) as total from football_games where (SELECT id from football_players where name = 'Cedric Vega')= any(players)) as num_games, football_players where football_players.name = 'Cedric Vega';
